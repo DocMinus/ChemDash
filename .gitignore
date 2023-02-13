@@ -1,0 +1,10 @@
+# Pycharm IDE
+**/.idea/
+**/__pycache__
+
+# Jupyter
+**/.ipynb_checkpoints
+
+**/image*.svg
+**/*.log
+gnurff.py
