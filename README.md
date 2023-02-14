@@ -1,4 +1,6 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+![GitHub](https://img.shields.io/github/license/docminus/ChemDash)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/docminus/ChemDash)
 
 # ChemDash
 ## Proof of concept small molecule (web) GUI
