@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Chemical Dashboard for reactions
 Version 0.3.7 (Jan 03, 14:15:00 2023)
@@ -12,8 +10,8 @@ Copyright (c) 2023 DocMinus
 """
 
 import dash
-from dash import html
 import dash_bootstrap_components as dbc
+from dash import html
 
 app = dash.Dash(
     __name__,

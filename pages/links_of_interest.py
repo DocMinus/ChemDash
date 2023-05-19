@@ -1,9 +1,9 @@
 import dash
 from dash import html
 
-from . import navigation
 from src.ids import *
 
+from . import navigation
 
 dash.register_page(__name__, path=MENU2SUB1_HREF)
 
@@ -19,7 +19,8 @@ hyperlinks = [
         "https://www.acsgcipr.org/tools-for-innovation-in-chemistry/",
     ),
     ("Chemix - editor for labdiagrams, etc", "https://chemix.org"),
-    ("Docminus's Gibthub:", "https://github.com/DocMinus"),
+    ("Docminus's Gibthub", "https://github.com/DocMinus"),
+    ("Oxygene Balance, Wikipedia", "https://en.wikipedia.org/wiki/Oxygen_balance"),
 ]
 
 links = [

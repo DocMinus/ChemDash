@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Reduced chemtools module for use in ChemDash proof of concept based on
 Version 0.5.6 (May 24, 07:30:00 2021)
@@ -9,13 +7,13 @@ Copyright (c) 2021-2023 DocMinus
 """
 
 import re
+
 import pandas as pd
 
 # RDkit stuff
-from rdkit import Chem
+from rdkit import Chem, RDLogger
 from rdkit.Chem.MolStandardize import rdMolStandardize
 from rdkit.ML.Descriptors.MoleculeDescriptors import MolecularDescriptorCalculator
-from rdkit import RDLogger
 
 # Important, or else waaaay too many RDkit details in output
 RDLogger.logger().setLevel(RDLogger.CRITICAL)
@@ -184,7 +182,6 @@ def clean_step4(mol_object: list) -> list:
         # name = mol.GetProp("_Name")
         # using name here seems to mess things up;
         # on the other hand, not necessary anyway since rdkit takes care of it at this stage
-        # print("3rd round, ID: ", mol.GetProp("_Name"), " ", Chem.rdmolfiles.MolToSmiles(mol))
         mol = uncharger.uncharge(rdMolStandardize.FragmentParent(mol))
         mol = md.Disconnect(mol)
 

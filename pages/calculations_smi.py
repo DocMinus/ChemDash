@@ -1,12 +1,13 @@
+# Update small refactor
 import dash
-from dash import dcc, html, Input, Output, State, ctx
+from dash import Input, Output, State, ctx, dcc, html
+
+from src.calculations.molecule import Molecule
+from src.calculations.oxybalance import n_count, oxy_balance
+from src.ids import *
+from src.mol_img import mol_image
 
 from . import navigation
-
-from src.calculations.oxybalance import oxy_balance, n_count
-from src.calculations.mol_properties import molecule
-from src.mol_img import mol_image
-from src.ids import *
 
 dash.register_page(__name__, path=MENU1SUB2_HREF)
 
@@ -68,7 +69,7 @@ def calc_and_display(calc_button_, calc_smiles_, reset):
     if len(calc_image):
         o_balance = oxy_balance(calc_smiles_)
         num_of_n = n_count(calc_smiles_)
-        _mol = molecule(calc_smiles_)
+        _mol = Molecule(calc_smiles_)
         sum_formula = _mol.sumformula()
         mol_weight = _mol.molwt()
 

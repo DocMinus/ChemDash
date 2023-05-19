@@ -1,11 +1,9 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 # changed do work without files, now SVG only in memory
 
 import base64
-from rdkit import Chem
-from rdkit.Chem.Draw import rdMolDraw2D, rdDepictor
-from rdkit import RDLogger
+
+from rdkit import Chem, RDLogger
+from rdkit.Chem.Draw import rdDepictor, rdMolDraw2D
 
 RDLogger.logger().setLevel(RDLogger.CRITICAL)
 

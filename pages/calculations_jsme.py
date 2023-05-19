@@ -1,17 +1,17 @@
+# Update: small refactor and added a round to the moldescriptors
 import dash
-from dash import html, Input, Output, dcc
 import dash_bio as dashbio
+import pandas as pd
 import plotly.graph_objects as go
 import plotly.subplots as sp
+from dash import Input, Output, dcc, html
 
-import pandas as pd
+from src.calculations.molecule import Molecule
+from src.calculations.oxybalance import oxy_balance
+from src.ids import *
+from src.mol_img import mol_image
 
 from . import navigation
-
-from src.calculations.oxybalance import oxy_balance
-from src.calculations.mol_properties import molecule
-from src.mol_img import mol_image
-from src.ids import *
 
 dash.register_page(__name__, path=MENU1SUB1_HREF)
 
@@ -23,7 +23,7 @@ layout = html.Div(
         html.Div(
             [
                 dashbio.Jsme(
-                    width="25%",
+                    width="40%",
                     height="36vh",
                     id="jsme",
                     smiles="",
@@ -62,7 +62,7 @@ def calc_and_display(jsme_smiles):
     o_balance = 0
     sum_formula = "C0H0"
     calc_image = mol_image(jsme_smiles)
-    alt_text = "No/invalid smiles. "
+    alt_text = "No/invalid structure. "
     descriptors = pd.DataFrame()
     fig = sp.make_subplots(rows=1, cols=1, specs=[[{"type": "table"}]])
     show_first_x_props = 5
@@ -72,9 +72,9 @@ def calc_and_display(jsme_smiles):
 
     if len(calc_image):
         o_balance = oxy_balance(jsme_smiles)
-        _mol = molecule(jsme_smiles)
+        _mol = Molecule(jsme_smiles)
         sum_formula = _mol.sumformula()
-        descriptors = _mol.moldescriptors()
+        descriptors = _mol.moldescriptors().round(3)  # the round is optional
         # only selected few properties shown; again, only proof of concept.
         # slicing from 1:x instead of 0:x removes the ID
         descriptors = descriptors.iloc[:1, 1:show_first_x_props]
@@ -95,7 +95,7 @@ def calc_and_display(jsme_smiles):
         )
 
     # can't get displayModeBar False to work, probably doing it wrong.
-    #fig.update_layout(displayModeBar=False, width=800, height=400)
+    # fig.update_layout(displayModeBar=False, width=800, height=400)
     fig.update_layout(width=800, height=400)
 
     _image = html.Img(

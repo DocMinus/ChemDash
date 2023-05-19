@@ -5,6 +5,7 @@
 # ChemDash
 ## Proof of concept small molecule (web) GUI
 Here is a proof of concept of a "small molecule chemistry centric gui", running in a web-browser<br>
+Some basic calculations are done which can be easiliy expanded upon. A practical, non standard one concerns process safety, the so called "oxygene balance". See for example https://en.wikipedia.org/wiki/Oxygen_balance for more info.
 It's build in Pyton and uses the Plotly Dash components.<br>
 For installation, see the environment folder.<br>
 
@@ -23,3 +24,6 @@ Dash is a somewhat straightforward way to make a GUI, especially in context of d
 A number of tutorials helped me, among them I want to thank and highlight:<br> 
 * [ArjanCodes dash tutorial](https://github.com/ArjanCodes/2022-dash), including the Youtube videos
 * [Algorithms](https://github.com/siddharthajuprod07/algorithms), including the Youtube videos
+<br>
+### Updates
+* Minor refactoring in code 0.0.1 -> 0.0.2

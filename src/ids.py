@@ -1,10 +1,11 @@
 # define diverse permanent variables accessible/used in multiple places.
-import os, sys
-
+import os
+import sys
 
 CURRENT_SRC_DIR = os.path.abspath(os.path.abspath(sys.argv[0]))
 TMP_DIR = os.path.abspath(os.path.join(os.path.dirname(CURRENT_SRC_DIR), "assets"))
 MENU_LOGO = "navbar_logo.png"
+
 
 # menu names and hrefs
 MENU1_NAME = "Calculations"

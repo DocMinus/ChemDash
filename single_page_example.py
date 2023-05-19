@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 """
 Chemical Dashboard for reactions
 Version 0.1.1 (Jan 03, 14:15:00 2023)
@@ -13,14 +11,13 @@ Copyright (c) 2023 DocMinus
 """
 
 
-from dash import Dash, dcc, html, Input, Output, State, ctx
 import dash_bootstrap_components as dbc
-
-from src.calculations.oxybalance import oxy_balance, n_count
-from src.mol_img import mol_image
-from src.ids import *
-
+from dash import Dash, Input, Output, State, ctx, dcc, html
 from rdkit import RDLogger
+
+from src.calculations.oxybalance import n_count, oxy_balance
+from src.ids import *
+from src.mol_img import mol_image
 
 RDLogger.logger().setLevel(RDLogger.CRITICAL)
 

@@ -1,5 +1,6 @@
 import dash
 from dash import html
+
 from . import navigation
 
 dash.register_page(__name__, path="/")
@@ -13,6 +14,6 @@ layout = html.Div(
         html.Br(),
         html.Label("For details, check out the README or have a look into the code."),
         html.Br(),
-        html.Label("Written early January 2023 by DocMinus"),
+        html.Label("Written January 2023 by DocMinus"),
     ]
 )

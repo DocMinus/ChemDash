@@ -1,15 +1,11 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# Updated: Corrected spelling of class name & renamed file for clarity.
 import pandas as pd
-from rdkit import Chem
+from rdkit import Chem, RDLogger
 from rdkit.Chem import Descriptors
-
-from rdkit import RDLogger
 
 RDLogger.logger().setLevel(RDLogger.CRITICAL)
 
-from .chemtools import clean_smiles, RDKIT_DESCRIPS, RDKIT_DESCRIPS_HEADERS
-
+from .chemtools import RDKIT_DESCRIPS, RDKIT_DESCRIPS_HEADERS, clean_smiles
 
 
 def get_clean_ids(_mollist: list) -> list:
@@ -38,7 +34,6 @@ def rdkit_calc(cleaned_mol_list: list) -> pd.DataFrame:
     :return: pandas df containing calculated properties (no structures, but now with ID)
     """
 
-    print("\nCalculating RDkit")
     calcrdk = [RDKIT_DESCRIPS.CalcDescriptors(mol) for mol in cleaned_mol_list]
     transposed_properties = zip(*calcrdk)
     headers = RDKIT_DESCRIPS_HEADERS
@@ -51,14 +46,17 @@ def rdkit_calc(cleaned_mol_list: list) -> pd.DataFrame:
     return pd.concat([properties_ids_df, properties_df1], axis=1)
 
 
-class molecule:
+class Molecule:
     """
     Simple clean and convert of smiles to rdkit object
-    Addition of different calculations as required.
-    Only ene of many ways to use this.
+    Adding more stuff possible, but not necessary for this proof of concept.
 
-    :param molecule: mol as smiles
-    :rtype:
+    :param molecule: mol as smiles \n
+    :rtype: cleanmolobj() = rdkit object \n
+            cleansmiles() = rkdit object as smiles \n
+            sumformula() \n
+            molwt() \n
+            moldescriptors() = rdkit calculated descriptors
     """
 
     def __init__(self, schmiles: str):
@@ -70,10 +68,10 @@ class molecule:
         self._mol_list = clean_smiles(self._in_mols_df)
         self._mol = self._mol_list[0]
 
-    def cleanmolobj(self):
+    def clean_molobj(self):
         return self._mol
 
-    def cleansmiles(self):
+    def cleaned_smiles(self):
         return Chem.rdmolfiles.MolToSmiles(self._mol)
 
     def sumformula(self):

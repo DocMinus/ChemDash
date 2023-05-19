@@ -1,17 +1,16 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 # changed do work without files, now SVG only in memory
+# oxygenbalance cutoffs:
 # -22 red; -233 green
 
-from rdkit import Chem
-from rdkit import RDLogger
+from rdkit import Chem, RDLogger
 
 RDLogger.logger().setLevel(RDLogger.CRITICAL)
 
 
+from collections import defaultdict
+
 from rdkit import Chem
 from rdkit.Chem import Descriptors
-from collections import defaultdict
 
 
 def elemental_composition(smiles: str) -> dict:
@@ -47,7 +46,6 @@ def elemental_composition(smiles: str) -> dict:
 
 
 def oxy_balance(smiles: str) -> str:
-
     composition = elemental_composition(smiles)
     o_balance = 0
     if composition:
